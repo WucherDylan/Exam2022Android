@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Recherche entrerprise</string>
+    <string name="label_query">Rechercher une entreprise</string>
+    <string name="label_cp">Code postal</string>
+    <string name="label_naf">Code Naf</string>
+    <string name="label_dep">Département</string>
+    <string name="item_menu1">Recherche</string>
+    <string name="item_menu2">Historique</string>
+    <string name="item_menu3">Quitter</string>
+    <string name="title_activity_historique">Historique</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="non_archiv">Non archivé</string>
+    <string name="archiv">Archivé</string>
+    <string name="historique_de_recherche">Historique de recherche</string>
+    <string name="archive">Archive</string>
+    <string name="plus">+</string>
+
+</resources>

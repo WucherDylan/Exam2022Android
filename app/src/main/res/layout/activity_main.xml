@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:ignore="ExtraText">
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    />
+    <TextView
+        android:id="@+id/labelQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:text="@string/label_query"
+        android:textStyle="bold" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editQuery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelQuery"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_toStartOf="@id/buttonQuery"
+        android:hint="Nom entreprise"
+        android:inputType="text" />
+
+
+    <AutoCompleteTextView
+        android:id="@+id/editNaf"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editDep"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="@dimen/margin"
+        android:layout_toStartOf="@id/buttonQuery"
+        android:hint="@string/label_naf"
+        android:inputType="text" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editCP"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editQuery"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="198dp"
+        android:layout_marginBottom="@dimen/margin"
+        android:layout_toStartOf="@id/buttonQuery"
+        android:hint="@string/label_cp"
+        android:inputType="number"
+        android:maxLength="5" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editDep"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editCP"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="-50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="@dimen/margin"
+        android:layout_toStartOf="@id/buttonQuery"
+        android:hint="@string/label_dep"
+        android:inputType="number"
+        android:maxLength="3" />
+
+    <TextView
+        android:id="@+id/txt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editCP"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-25dp"
+        android:layout_marginEnd="251dp"
+        android:gravity="center"
+        android:text="OU" />
+
+    <ImageButton
+        android:id="@+id/buttonQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelQuery"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="@dimen/margin"
+        android:src="@android:drawable/ic_menu_search"
+
+        />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="58dp"
+        android:layout_height="34dp"
+        android:layout_below="@id/labelQuery"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="342dp"
+        android:layout_marginBottom="@dimen/margin"
+        android:checked="true"
+        android:text="+" />
+
+    <ListView
+        android:id="@+id/listSirene"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/editNaf"
+        android:layout_marginTop="-2dp" />
+
+    <ProgressBar
+        android:id="@+id/queryProgressBar"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

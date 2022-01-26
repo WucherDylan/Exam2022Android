@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menuRecherche"
+        android:title="@string/item_menu1"
+        android:icon="@drawable/ic_icon"/>
+
+    <item android:id="@+id/menuHistorique"
+        android:title="@string/item_menu2">
+        <menu>
+            <item android:id="@+id/noArchive"
+                android:title="@string/non_archiv" />
+            <item android:id="@+id/Archive"
+                android:title="@string/archiv" />
+        </menu>
+    </item>
+    <item android:id="@+id/menuExit"
+        android:title="@string/item_menu3"/>
+
+</menu>
