@@ -1,5 +1,7 @@
 package com.example.exam_android_2022
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,7 +19,7 @@ class ResultatActivity : AppCompatActivity() {
         val recherche = intent?.extras?.get("recherche") as? Recherche ?:return
         val db = LaDataBase.getDataBase(context = MainActivity())
         val sirene = db.sireneDao()
-        val result = sirene.RechercheSirene(recherche.id!!)
+        val result = sirene.rechercheSireneHistorique(recherche.id!!)
         val listResultat =  findViewById<ListView>(R.id.listResultat)
         listResultat.adapter = ArrayAdapter<Sirene>(
             applicationContext,
@@ -40,7 +42,7 @@ class ResultatActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
-            R.id.Archive->{
+            R.id.archive->{
                 val intent = Intent(applicationContext, ArchiveActivity::class.java)
                 startActivity(intent)
                 true
@@ -51,8 +53,15 @@ class ResultatActivity : AppCompatActivity() {
                 true
             }
             R.id.menuExit -> {
-                this.finish()
-                true
+                AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Sortir")
+                    .setMessage("Fermer l'application?")
+                    .setPositiveButton("Oui", DialogInterface.OnClickListener { dialog, which ->
+                        val intent = Intent(Intent.ACTION_MAIN)
+                        intent.addCategory(Intent.CATEGORY_HOME)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                        finish()
+                    }).setNegativeButton("Non", null).show()
             }
         }
         return super.onOptionsItemSelected(item)

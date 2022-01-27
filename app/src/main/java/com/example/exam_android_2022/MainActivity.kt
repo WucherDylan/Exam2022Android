@@ -1,29 +1,23 @@
 package com.example.exam_android_2022
 
 import android.annotation.SuppressLint
-import android.app.Application
+import android.app.AlertDialog
+import android.content.DialogInterface
+
 import android.content.Intent
-import android.media.Image
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.*
 import android.view.Menu
-import android.view.MenuItem
-import android.view.MotionEvent
-import android.view.View
 import android.widget.*
-import androidx.constraintlayout.widget.ConstraintSet
-import com.example.exam_android_2022.Dao.CodeNafDao
-import com.example.exam_android_2022.Dao.RechercheDao
-import com.example.exam_android_2022.Dao.RechercheSireneDao
-import com.example.exam_android_2022.Dao.SireneDao
 import com.example.exam_android_2022.model.Recherche
 import com.example.exam_android_2022.model.RechercheSirene
 import com.example.exam_android_2022.model.Sirene
 import java.text.SimpleDateFormat
 import java.util.*
-import android.widget.AbsoluteLayout
 
-
+import android.widget.RelativeLayout
 
 
 class MainActivity : AppCompatActivity() {
@@ -47,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         val autoCompletCP = findViewById<AutoCompleteTextView>(R.id.editCP)
         val autoCompletDEP = findViewById<AutoCompleteTextView>(R.id.editDep)
         val autoCompletNaf = findViewById<AutoCompleteTextView>(R.id.editNaf)
-        val listCodeNaf = nafDao.RechercheCodeNaf()
+        val listCodeNaf = nafDao.rechercheCodeNaf()
         val NafAdapter = ArrayAdapter(
             applicationContext,
             android.R.layout.simple_list_item_1,
@@ -56,12 +50,21 @@ class MainActivity : AppCompatActivity() {
         )
         autoCompletNaf.setAdapter(NafAdapter)
         val btn = findViewById<Switch>(R.id.switch1)
+        val params = RelativeLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+
         btn.setOnClickListener {
             if (btn.isChecked()) {
                 autoCompletCP.visibility = View.VISIBLE
                 autoCompletDEP.visibility = View.VISIBLE
                 autoCompletNaf.visibility = View.VISIBLE
                 findViewById<TextView>(R.id.txt1).visibility = View.VISIBLE
+                btn.setText("-")
+                params.addRule(RelativeLayout.BELOW, R.id.editNaf)
+                listSirene.layoutParams = params
 
 
             } else {
@@ -69,7 +72,14 @@ class MainActivity : AppCompatActivity() {
                 autoCompletDEP.visibility = View.INVISIBLE
                 autoCompletNaf.visibility = View.INVISIBLE
                 findViewById<TextView>(R.id.txt1).visibility = View.INVISIBLE
-                btn.text = "+"
+                autoCompletCP.setText("")
+                autoCompletDEP.setText("")
+                autoCompletNaf.setText("")
+                btn.setText("+")
+                params.addRule(RelativeLayout.BELOW, R.id.switch1)
+                listSirene.layoutParams = params
+
+
             }
         }
 
@@ -132,7 +142,7 @@ class MainActivity : AppCompatActivity() {
                             btn.visibility = View.INVISIBLE
                         }
                         if (naf.isNotBlank() && naf.isNotEmpty()) {
-                            naf = nafDao.ConvertRecherche(naf).toString()
+                            naf = nafDao.convertRecherche(naf).toString()
                         }
                         val result: List<Sirene>
                         if (rechercheDAO.existe(
@@ -149,7 +159,7 @@ class MainActivity : AppCompatActivity() {
                                     dep = dep,
                                     codeNaf = naf
                                 )
-                            result = sireneDAO.RechercheSirene(recherche!!.id!!)
+                            result = sireneDAO.rechercheSirene(recherche!!.id!!)
 
                         } else {
                             //ajout de la recherche dans la BDD
@@ -162,7 +172,7 @@ class MainActivity : AppCompatActivity() {
                                     codeNaf = naf
                                 )
                             )
-                            result = svc.getSirene(query, cp, dep,naf)
+                            result = svc.getSirene(query, cp, dep, naf)
                             result.forEach() {
                                 var id: Long
                                 if (sireneDAO.sirenExiste(siren = it.siren) == 0) {
@@ -225,14 +235,21 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
-            R.id.Archive -> {
+            R.id.archive -> {
                 val intent = Intent(applicationContext, ArchiveActivity::class.java)
                 startActivity(intent)
                 true
             }
             R.id.menuExit -> {
-                //Fermer l'application
-                true
+                AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Sortir")
+                    .setMessage("Fermer l'application?")
+                    .setPositiveButton("Oui", DialogInterface.OnClickListener { dialog, which ->
+                        val intent = Intent(Intent.ACTION_MAIN)
+                        intent.addCategory(Intent.CATEGORY_HOME)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                        finish()
+                    }).setNegativeButton("Non", null).show()
             }
         }
         return super.onOptionsItemSelected(item)

@@ -1,5 +1,6 @@
 package com.example.exam_android_2022
 
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -18,6 +19,10 @@ import com.example.exam_android_2022.Dao.SireneDao
 import com.example.exam_android_2022.model.Sirene
 import com.google.android.gms.maps.CameraUpdateFactory
 import org.w3c.dom.Text
+import android.content.DialogInterface
+
+
+
 
 class InfoActivity : AppCompatActivity(),OnMapReadyCallback {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -37,14 +42,21 @@ class InfoActivity : AppCompatActivity(),OnMapReadyCallback {
                 startActivity(intent)
                 true
             }
-            R.id.Archive -> {
+            R.id.archive -> {
                 val intent = Intent(applicationContext, ArchiveActivity::class.java)
                 startActivity(intent)
                 true
             }
             R.id.menuExit -> {
-                this.finish()
-                true
+                AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Sortir")
+                    .setMessage("Fermer l'application?")
+                    .setPositiveButton("Oui", DialogInterface.OnClickListener { dialog, which ->
+                        val intent = Intent(Intent.ACTION_MAIN)
+                        intent.addCategory(Intent.CATEGORY_HOME)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                        finish()
+                    }).setNegativeButton("Non", null).show()
             }
         }
         return super.onOptionsItemSelected(item)

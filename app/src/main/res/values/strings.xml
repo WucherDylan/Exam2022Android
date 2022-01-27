@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Recherche entrerprise</string>
+    <string name="app_name">Entrep\'R</string>
     <string name="label_query">Rechercher une entreprise</string>
     <string name="label_cp">Code postal</string>
     <string name="label_naf">Code Naf</string>

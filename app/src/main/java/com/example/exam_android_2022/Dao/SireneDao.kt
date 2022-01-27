@@ -6,14 +6,14 @@ import com.example.exam_android_2022.model.Sirene
 
 @Dao
 interface SireneDao {
-//  @Query("Select * From Sirene Order by l1_nomarliseeNomSociete")
-//  fun getAll():List<Sirene>
-
-//  @Query("Select * From sirene where id=:id")
-//  fun getById(id : Long):Sirene?
 
   @Query("Select Sirene.* from Sirene join RechercheSirene ON (Sirene.id = RechercheSirene.sirene_id)  where RechercheSirene.recherche_id =:id  and archive=0")
-  fun RechercheSirene (id:Long): List<Sirene>
+  fun rechercheSirene (id:Long): List<Sirene>
+
+  @Query("Select Sirene.* from Sirene join RechercheSirene ON (Sirene.id = RechercheSirene.sirene_id)  where RechercheSirene.recherche_id =:id")
+  fun rechercheSireneHistorique (id:Long): List<Sirene>
+
+
 
   @Query("Select * from Sirene where siren=:siren and archive=0")
   fun getSirene (siren:String):Sirene

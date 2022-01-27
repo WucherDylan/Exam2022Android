@@ -9,7 +9,7 @@ import javax.net.ssl.HttpsURLConnection
 
 class SireneService() {
     private val apiUrl =
-        "https://entreprise.data.gouv.fr/api/sirene/v1/full_text/%s?code_postal=%s&departement=%s&activite_principale=%s"
+        "https://entreprise.data.gouv.fr/api/sirene/v1/full_text/%s?code_postal=%s&departement=%s&activite_principale=%s&per_page=30"
 
     fun getSirene(query: String, cp: String = "", dep: String = "",naf:String=""): List<Sirene> {
         val url = URL(String.format(apiUrl, query, cp, dep,naf))

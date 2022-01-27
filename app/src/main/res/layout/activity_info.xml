@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Historique">
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/ike"
+    android:scaleType="center"
+    />
 <GridLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -12,20 +23,22 @@
         android:layout_width="187dp"
         android:layout_gravity="left"
         android:textSize="@dimen/texte"
-        android:text="Siret :" />
+        android:text="Siret :"
+        android:fontFamily="@string/font_family_thin"/>
 
     <TextView
         android:id="@+id/siren"
-        android:layout_width="83dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:text="ara"
+        android:fontFamily="@string/font_family_thin"
+        android:text="N/a"
         android:textSize="@dimen/texte" />
 
     <TextView
         android:id="@+id/titre2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@string/font_family_thin"
         android:textSize="@dimen/texte"
         android:text="Siren :" />
 
@@ -33,38 +46,36 @@
         android:id="@+id/siret"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@string/font_family_thin"
         android:textSize="@dimen/texte"
-        android:text="oro" />
-
+        android:text="N/a" />
 
     <TextView
         android:id="@+id/nomSociete"
         android:layout_width="fill_parent"
+        android:fontFamily="@string/font_family_thin"
         android:layout_height="43dp"
         android:layout_columnSpan="02"
         android:layout_marginTop="10sp"
-        android:layout_marginBottom="10sp"
-        android:text="nomS"
+        android:layout_marginBottom="0sp"
+        android:text="N/a"
         android:textAlignment="center"
         android:textSize="@dimen/texte" />
-
-    <TextView
-        android:id="@+id/TitreActivitePrincipal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/texte"
-        android:text="Activité principal" />
 
     <TextView
         android:id="@+id/ActivitePrincipal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/texte"
-        android:text="result" />
+        android:fontFamily="@string/font_family_thin"
+        android:textSize="15sp"
+        android:layout_columnSpan="2"
+        android:layout_marginBottom="10sp"
+        android:text="N/a" />
     <TextView
         android:id="@+id/titreRegion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@string/font_family_thin"
         android:textSize="@dimen/texte"
         android:text="Region :" />
 
@@ -72,12 +83,14 @@
         android:id="@+id/Region"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@string/font_family_thin"
         android:textSize="@dimen/texte"
-        android:text="result" />
+        android:text="N/a" />
     <TextView
         android:id="@+id/Titredepartement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@string/font_family_thin"
         android:textSize="@dimen/texte"
         android:text="Département :" />
 
@@ -85,12 +98,14 @@
         android:id="@+id/dep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@string/font_family_thin"
         android:textSize="@dimen/texte"
-        android:text="result" />
+        android:text="N/a" />
     <TextView
         android:id="@+id/TitreCodePostal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@string/font_family_thin"
         android:textSize="@dimen/texte"
         android:text="Code postal :" />
 
@@ -98,12 +113,14 @@
         android:id="@+id/CodePostal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@string/font_family_thin"
         android:textSize="@dimen/texte"
-        android:text="result" />
+        android:text="N/a" />
     <TextView
         android:id="@+id/TitreEffectif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@string/font_family_thin"
         android:textSize="@dimen/texte"
         android:text="Effectif :" />
 
@@ -111,8 +128,9 @@
         android:id="@+id/Effectif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@string/font_family_thin"
         android:textSize="@dimen/texte"
-        android:text="result" />
+        android:text="N/a" />
 
     <fragment
         android:id="@+id/map"
@@ -120,6 +138,9 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_columnSpan="2"
-        android:layout_below="@id/listSirene" />
+        android:fontFamily="@string/font_family_thin"
+        android:layout_below="@id/listSirene"
+        />
 
 </GridLayout>
+</RelativeLayout>

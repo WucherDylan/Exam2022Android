@@ -12,17 +12,18 @@ import com.example.exam_android_2022.model.RechercheSirene
 import com.example.exam_android_2022.model.Sirene
 import java.io.BufferedReader
 
-@Database (version = 1, entities = [Sirene::class, Recherche::class,RechercheSirene::class])
-abstract class LaDataBase: RoomDatabase(){
+@Database(version = 1, entities = [Sirene::class, Recherche::class, RechercheSirene::class])
+abstract class LaDataBase : RoomDatabase() {
     abstract fun sireneDao(): SireneDao
     abstract fun rechercheDao(): RechercheDao
-    abstract fun rechercheSireneDao() : RechercheSireneDao
-    companion object{
-        var INSTANCE : LaDataBase? = null
+    abstract fun rechercheSireneDao(): RechercheSireneDao
 
-        fun getDataBase(context: MainActivity):LaDataBase{
-            if (INSTANCE == null){
-                INSTANCE = Room.databaseBuilder(context,LaDataBase::class.java,"Examen2022.db")
+    companion object {
+        var INSTANCE: LaDataBase? = null
+
+        fun getDataBase(context: MainActivity): LaDataBase {
+            if (INSTANCE == null) {
+                INSTANCE = Room.databaseBuilder(context, LaDataBase::class.java, "Examen2022.db")
                     .allowMainThreadQueries()
                     .build()
             }

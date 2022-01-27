@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,13 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
 
-    />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="center"
+        android:src="@drawable/ike" />
     <TextView
         android:id="@+id/labelQuery"
+        android:fontFamily="@string/font_family_thin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -23,17 +24,20 @@
         android:layout_marginEnd="@dimen/margin"
         android:layout_marginBottom="@dimen/margin"
         android:text="@string/label_query"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="20dp"
+       />
 
     <AutoCompleteTextView
         android:id="@+id/editQuery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelQuery"
+        android:layout_alignParentTop="true"
         android:layout_marginStart="@dimen/margin"
-        android:layout_marginTop="@dimen/margin"
+        android:layout_marginTop="49dp"
         android:layout_marginEnd="@dimen/margin"
         android:layout_toStartOf="@id/buttonQuery"
+        android:fontFamily="serif"
         android:hint="Nom entreprise"
         android:inputType="text" />
 
@@ -44,12 +48,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editDep"
         android:layout_marginStart="@dimen/margin"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="133dp"
         android:layout_marginBottom="@dimen/margin"
         android:layout_toStartOf="@id/buttonQuery"
+        android:fontFamily="@string/font_family_thin"
         android:hint="@string/label_naf"
-        android:inputType="text" />
+        android:inputType="text"
+        android:visibility="invisible"/>
 
     <AutoCompleteTextView
         android:id="@+id/editCP"
@@ -61,23 +66,27 @@
         android:layout_marginEnd="198dp"
         android:layout_marginBottom="@dimen/margin"
         android:layout_toStartOf="@id/buttonQuery"
+        android:fontFamily="@string/font_family_thin"
         android:hint="@string/label_cp"
         android:inputType="number"
+        android:visibility="invisible"
         android:maxLength="5" />
 
     <AutoCompleteTextView
         android:id="@+id/editDep"
+        android:visibility="invisible"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/editCP"
         android:layout_marginStart="@dimen/margin"
-        android:layout_marginTop="-50dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginTop="-55dp"
+        android:layout_marginEnd="21dp"
         android:layout_marginBottom="@dimen/margin"
         android:layout_toStartOf="@id/buttonQuery"
         android:hint="@string/label_dep"
         android:inputType="number"
-        android:maxLength="3" />
+        android:maxLength="3"
+        android:fontFamily="@string/font_family_thin"/>
 
     <TextView
         android:id="@+id/txt1"
@@ -85,10 +94,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editCP"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="-25dp"
+        android:layout_marginTop="-40dp"
         android:layout_marginEnd="251dp"
+        android:fontFamily="monospace"
         android:gravity="center"
-        android:text="OU" />
+        android:text="OU"
+        android:visibility="invisible"/>
 
     <ImageButton
         android:id="@+id/buttonQuery"
@@ -100,8 +111,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="@dimen/margin"
+        android:fontFamily="@string/font_family_thin"
         android:src="@android:drawable/ic_menu_search"
-
         />
 
     <Switch
@@ -114,15 +125,16 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="342dp"
         android:layout_marginBottom="@dimen/margin"
-        android:checked="true"
+        android:checked="false"
         android:text="+" />
 
     <ListView
         android:id="@+id/listSirene"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/editNaf"
-        android:layout_marginTop="-2dp" />
+        android:layout_below="@+id/switch1"
+        android:layout_marginTop="-5dp"
+        android:fontFamily="@string/font_family_thin" />
 
     <ProgressBar
         android:id="@+id/queryProgressBar"

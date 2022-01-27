@@ -20,13 +20,12 @@ data class Sirene(
     var libelle_activite_principale_entreprise: String = "",
     var tranche_effectif_salarie_entreprise: String = "",
     var archive: Boolean = false,
-    var date_ajout: String="",
-    var latitude:String="",
-    var longitutde:String = ""
+    var date_ajout: String = "",
+    var latitude: String = "",
+    var longitutde: String = ""
 
-):Comparable<Sirene>,Serializable
-{
-    override fun compareTo(other: Sirene):Int {
+) : Comparable<Sirene>, Serializable {
+    override fun compareTo(other: Sirene): Int {
         return l1_nomarliseeNomSociete.compareTo(other.l1_nomarliseeNomSociete)
     }
 

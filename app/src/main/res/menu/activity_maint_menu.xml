@@ -11,7 +11,7 @@
         <menu>
             <item android:id="@+id/noArchive"
                 android:title="@string/non_archiv" />
-            <item android:id="@+id/Archive"
+            <item android:id="@+id/archive"
                 android:title="@string/archiv" />
         </menu>
     </item>
